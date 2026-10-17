@@ -376,12 +376,13 @@
       document.body.style.overflow = "";
     }
 
-    function readChapter(item, number) {
-      alert(
-        "Kamu memilih " + item.title + " — Chapter " + number +
-        ". Halaman baca akan dibuat pada tahap berikutnya."
-      );
-    }
+    
+function readChapter(item, number) {
+  const url = new URL("./reader.html", window.location.href);
+  url.searchParams.set("title", item.title);
+  url.searchParams.set("chapter", number);
+  window.location.href = url.href;
+}
 
     function showAll() {
       search.value = "";
