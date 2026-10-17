@@ -377,11 +377,12 @@
     }
 
     
+
 function readChapter(item, number) {
-  const url = new URL("./reader.html", window.location.href);
-  url.searchParams.set("title", item.title);
-  url.searchParams.set("chapter", number);
-  window.location.href = url.href;
+  window.location.href =
+    "./reader.html?title=" +
+    encodeURIComponent(item.title) +
+    "&chapter=" + encodeURIComponent(number);
 }
 
     function showAll() {
