@@ -180,33 +180,34 @@ pages.innerHTML = `
     const previous = document.getElementById("previous");
     const next = document.getElementById("next");
 
-    function updateChapter() {
-      const number = Number(chapter.value);
+    
+function updateChapter() {
+  const number = Number(chapter.value);
 
-      label.textContent = "Chapter " + number;
-      document.title = "Shadow Legend - Chapter " + number;
+  label.textContent = "Chapter " + number;
+  document.title = "Shadow Legend - Chapter " + number;
 
-      // Gambar chapter akan ditambahkan nanti.
-      pages.innerHTML = `
-        <div class="placeholder">
-          Shadow Legend<br>
-          Chapter ${number}<br>
-          Gambar chapter akan ditambahkan pada langkah berikutnya.
-        </div>
-        <div class="placeholder">
-          Halaman 2 — Chapter ${number}
-        </div>
-        <div class="placeholder">
-          Halaman 3 — Chapter ${number}
-        </div>
-      `;
+  if (number === 1) {
+    pages.innerHTML = `
+      <img class="page" src="./images/chapter-1/001.webp" alt="Halaman 1">
+      <img class="page" src="./images/chapter-1/002.webp" alt="Halaman 2">
+      <img class="page" src="./images/chapter-1/003.webp" alt="Halaman 3">
+    `;
+  } else {
+    pages.innerHTML = `
+      <div class="placeholder">
+        Shadow Legend — Chapter ${number}<br>
+        Gambar chapter ini belum ditambahkan.
+      </div>
+    `;
+  }
 
-      previous.disabled = number === 1;
-      next.disabled = number === 3;
+  previous.disabled = number === 1;
+  next.disabled = number === 3;
 
-      previous.style.opacity = previous.disabled ? ".4" : "1";
-      next.style.opacity = next.disabled ? ".4" : "1";
-    }
+  previous.style.opacity = previous.disabled ? ".4" : "1";
+  next.style.opacity = next.disabled ? ".4" : "1";
+}
 
     chapter.addEventListener("change", updateChapter);
 
