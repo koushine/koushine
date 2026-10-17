@@ -187,7 +187,30 @@ function updateChapter() {
   label.textContent = "Chapter " + number;
   document.title = "Shadow Legend - Chapter " + number;
 
+  
   if (number === 1) {
+    pages.innerHTML = `
+      <img class="page"
+           src="./images/chapter-1/001.webp"
+           alt="Halaman 1 manga"
+           onerror="this.alt='Gagal memuat 001.webp'">
+      <img class="page"
+           src="./images/chapter-1/002.webp"
+           alt="Halaman 2 manga"
+           onerror="this.alt='Gagal memuat 002.webp'">
+      <img class="page"
+           src="./images/chapter-1/003.webp"
+           alt="Halaman 3 manga"
+           onerror="this.alt='Gagal memuat 003.webp'">
+    `;
+  } else {
+    pages.innerHTML = `
+      <div class="placeholder">
+        Shadow Legend — Chapter ${number}<br>
+        Gambar chapter ini belum ditambahkan.
+      </div>
+    `;
+  } {
     pages.innerHTML = `
       <img class="page" src="./images/chapter-1/001.webp" alt="Halaman 1">
       <img class="page" src="./images/chapter-1/002.webp" alt="Halaman 2">
